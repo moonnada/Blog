@@ -43,8 +43,9 @@
 
 .registerLoginButton {
     position: absolute;
-    top: 60px;
-    right: 20px;
+    top: 90px;
+    right: 50px;
+    padding: 10px;
     background-color: lightcoral;
     cursor: pointer;
     border: none;

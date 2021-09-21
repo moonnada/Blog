@@ -5,14 +5,17 @@ import axios from "axios";
 import "./setting.css"
 
 export default function Setting() {
-    const {user} = useContext(Context);
+    const {user, dispatch} = useContext(Context);
     const [file, setFile] = useState(null);
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [success, setSuccess] = useState(false);
+    const PF = "http://localhost:5000/images/"
 
     const handleSubmit = async (e) => {
       e.preventDefault();
+      dispatch({type:"UPDATE_START"})
       const updatedUser = {
           userId: user._id,
           username,
@@ -24,14 +27,18 @@ export default function Setting() {
           const filename = Date.now() + file.name;
           data.append("name", filename);
           data.append("file", file);
-          updatedUser.profilephoto = filename;
+          updatedUser.profilePic = filename;
           try{
               await axios.post("/upload", data);
-          } catch(err){}
+            } catch(err){}
+          }
+          try{
+            const res = await axios.put("/users/"+user._id, updatedUser);
+            setSuccess(true);
+            dispatch({type:"UPDATE_SUCCESS", payload: res.data })
+      }catch(err){
+        dispatch({type:"UPDATE_FAILURE"})
       }
-      try{
-          await axios.put("/users/"+user._id, updatedUser);
-      }catch(err){}
   }
     return (
         <div className="settings">
@@ -44,7 +51,7 @@ export default function Setting() {
           <label>Profile Picture</label>
           <div className="settingsPP">
             <img
-              src={user.profilePic}
+              src={file ? URL.createObjectURL(file) : PF + user.profilePic}
               alt=""
             />
             <label htmlFor="fileInput">
@@ -67,6 +74,7 @@ export default function Setting() {
           <button className="settingsSubmitButton" type="submit">
             Update
           </button>
+          {success && <span style={{color: "green", textAlign: "center", marginTop:"20px"}}>Profile has been updated...</span>}
         </form>
       </div>
       <Sidebar />

@@ -34,6 +34,9 @@ export default function Sidebar() {
                         </Link>
                     })}
                     <li className="sidebarListItem">Life</li>
+                    <li className="sidebarListItem">Food</li>
+                    <li className="sidebarListItem">Travel</li>
+                    <li className="sidebarListItem">Music</li>
                    
                 </ul>
             </div>

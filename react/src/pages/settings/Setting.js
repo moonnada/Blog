@@ -45,17 +45,17 @@ export default function Setting() {
       <div className="settingsWrapper">
         <div className="settingsTitle">
           <span className="settingsTitleUpdate">Update Your Account</span>
-          <span className="settingsTitleDelete">Delete Account</span>
+          {/* <span className="settingsTitleDelete">Delete Account</span> */}
         </div>
         <form className="settingsForm" onSubmit={handleSubmit}>
-          <label>Profile Picture</label>
+          {/* <label>Profile Picture</label> */}
           <div className="settingsPP">
-            <img
+            {/* <img
               src={file ? URL.createObjectURL(file) : PF + user.profilePic}
               alt=""
-            />
+            /> */}
             <label htmlFor="fileInput">
-              <i className="settingsPPIcon far fa-user-circle"></i>{" "}
+              {/* <i className="settingsPPIcon far fa-user-circle"></i>{" "} */}
             </label>
             <input
               id="fileInput"

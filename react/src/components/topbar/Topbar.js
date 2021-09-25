@@ -21,7 +21,6 @@ export default function Topbar() {
             <div className="topCenter">
                 <ul className="topList">
                     <li className="topListItem"> <Link className="link" to="/" >HOME</Link> </li>
-                    <li className="topListItem"> <Link className="link" to="/" >ABOUT</Link> </li>
                     <li className="topListItem"> <Link className="link" to="/" >CONTACT</Link> </li>
                     <li className="topListItem"> <Link className="link" to="/write" >WRITE</Link> </li>
                     <li className="topListItem" onClick={handleLogout}> {user && "LOGOUT"} </li>
@@ -30,12 +29,8 @@ export default function Topbar() {
             <div className="topRight">
             {
                 user ? (
-                    <Link to="/setting">
-                        <img
-                            className="topImg"
-                            src={PF+user.profilePic}
-                            alt=""
-                        />
+                    <Link to="/setting" className="topListItem link">
+                        SETTING
                     </Link>
                 ) : (
                     <ul className="topList">
@@ -49,7 +44,7 @@ export default function Topbar() {
                 )
             }
             
-            <i className="topSearchIcon fas fa-search"></i>
+            {/* <i className="topSearchIcon fas fa-search"></i> */}
             </div>
         </div>
     )

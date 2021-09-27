@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node index.js",
     "heroku-postbuild": "cd react && npm install && npm run build"
-
   },
   "author": "Ray",
   "license": "ISC",

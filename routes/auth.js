@@ -14,7 +14,7 @@ router.post("/register", async(req,res) => {
         })
         const user = await newUser.save();
         res.status(200).json(user);
-    } catch(err){
+    } catch(err){x
         res.status(500).json(err);  //something is wrong with mongoDB or Express server
     }
 })
@@ -32,6 +32,7 @@ router.post("/login", async (req, res) => {
         res.status(200).json(others)
     } catch(err){
         res.status(500).json(err)
+        //return res.send(err.message);
     }
 })
 

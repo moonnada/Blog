@@ -13,7 +13,7 @@ dotenv.config();
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")))
 
-mongoose.connect("mongodb+srv://moonnada:Mqudans727!@cluster0.u6uvg.mongodb.net/blog?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true, 
     useUnifiedTopology: true,
     
@@ -37,6 +37,13 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
+
+app.use(express.static(path.join(__dirname, "/react/build")));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/react/build', 'index.html'));
+});
+
 
 app.listen(process.env.PORT || 5000, () => {
     console.log("Backend is running");

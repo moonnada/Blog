@@ -5,7 +5,7 @@ MERN Stack blog app project. How to create a full-stack app using React, Node.js
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run: https://blogooo.herokuapp.com/
 
 ### `yarn start`
 

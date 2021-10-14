@@ -1,9 +1,7 @@
-
 import React, { Component } from 'react';
-import FormErrors from "../../components2/FormErrors";
-import Validate from "../../components2/utility/FormValidation";
+import FormErrors from "../FormErrors";
+import Validate from "../utility/FormValidation";
 import { Auth } from "aws-amplify";
-import "./register.css";
 
 class SignUp extends Component {
   state = {
@@ -74,16 +72,16 @@ class SignUp extends Component {
 
   render() {
     return (
-      <section className="register">
-        <div className="registerTitle">
-          <h1 >Register</h1>
-          <FormErrors  className="error" formerrors={this.state.errors} />
+      <section className="section auth">
+        <div className="container">
+          <h1>Register</h1>
+          <FormErrors formerrors={this.state.errors} />
 
-          <form className="registerForm" onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <div className="field">
               <p className="control">
                 <input 
-                  className="registerInput" 
+                  className="input" 
                   type="text"
                   id="username"
                   aria-describedby="userNameHelp"
@@ -96,7 +94,7 @@ class SignUp extends Component {
             <div className="field">
               <p className="control has-icons-left has-icons-right">
                 <input 
-                  className="registerInput" 
+                  className="input" 
                   type="email"
                   id="email"
                   aria-describedby="emailHelp"
@@ -104,39 +102,49 @@ class SignUp extends Component {
                   value={this.state.email}
                   onChange={this.onInputChange}
                 />
-                
+                <span className="icon is-small is-left">
+                  <i className="fas fa-envelope"></i>
+                </span>
               </p>
             </div>
             <div className="field">
               <p className="control has-icons-left">
                 <input 
-                  className="registerInput" 
+                  className="input" 
                   type="password"
                   id="password"
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this.onInputChange}
                 />
-               
+                <span className="icon is-small is-left">
+                  <i className="fas fa-lock"></i>
+                </span>
               </p>
             </div>
             <div className="field">
               <p className="control has-icons-left">
                 <input 
-                  className="registerInput" 
+                  className="input" 
                   type="password"
                   id="confirmpassword"
                   placeholder="Confirm password"
                   value={this.state.confirmpassword}
                   onChange={this.onInputChange}
                 />
-                
+                <span className="icon is-small is-left">
+                  <i className="fas fa-lock"></i>
+                </span>
               </p>
             </div>
-            
             <div className="field">
               <p className="control">
-                <button className="registerButton">
+                <a href="/forgotpassword">Forgot password?</a>
+              </p>
+            </div>
+            <div className="field">
+              <p className="control">
+                <button className="button is-success">
                   Register
                 </button>
               </p>
@@ -149,47 +157,3 @@ class SignUp extends Component {
 }
 
 export default SignUp;
-
-// import { Link } from "react-router-dom"
-// import { useState } from "react";
-// import "./register.css"
-// import axios from "axios";
-
-// export default function Register() {
-//     const [username, setUsername] = useState("");
-//     const [email, setEmail] = useState("");
-//     const [password, setPassword] = useState("");
-//     const [error, setError] = useState(false);
-
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//         setError(false);
-//         try{
-//             const res = await axios.post("/auth/register", {
-//             username, email, password,                    
-//         });
-//         res.data && window.location.replace("/login");
-//         } catch(err){
-//             setError(true);
-//         }
-//     };
-
-//     return (
-//         <div className="register">
-//             <span className="registerTitle">Register</span>
-//             <form className="registerForm" onSubmit={handleSubmit}>
-//                 <label>Username</label>
-//                 <input className="registerInput" type="text" placeholder="Enter your username..." onChange={e => setUsername(e.target.value)}/>
-//                 <label>Email</label>
-//                 <input className="registerInput" type="text" placeholder="Enter your email..." onChange={e => setEmail(e.target.value)}/>
-//                 <label>Password</label>
-//                 <input className="registerInput" type="password" placeholder="Enter your password..." onChange={e => setPassword(e.target.value)}/>
-//                 <button className="registerButton" type="submit">Register</button>
-//             </form>
-//             <button className="registerLoginButton">
-//                 <Link className="link" to="/login">Login</Link>
-//             </button>
-//            {error &&  <span style = {{color: "red", marginTop: "10px" }} >Something went wrong</span>}
-//         </div>
-//     )
-// }

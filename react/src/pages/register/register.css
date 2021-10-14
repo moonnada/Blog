@@ -12,7 +12,18 @@
 }
 
 .registerTitle{
-    font-size: 50px;
+    font-size: 30px;
+    padding-bottom: 80px;
+}
+
+h1{
+    padding-bottom: 10px;
+}
+
+.error{
+    color: red;
+    margin-bottom: 20px;
+
 }
 
 .registerForm{
@@ -26,9 +37,10 @@
 }
 
 .registerInput{
-    padding: 10px;
+    padding: 17px;
     background-color: white;
     border: none;
+    margin-bottom: 10px;
 }
 
 .registerButton{
@@ -39,6 +51,7 @@
     color: white;
     border-radius: 10px;
     padding: 10px;
+    
 }
 
 .registerLoginButton {

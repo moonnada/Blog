@@ -1,15 +1,10 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import {Context} from "../../context/Context"
+import React, { Component } from 'react'
 import "./topbar.css"
 
-export default function Topbar() {
-    const {user, dispatch} = useContext(Context);
-    const PF = "http://localhost:5000/images/"
-
-    const handleLogout = () => {
-        dispatch({type: "LOGOUT"});
-    }
+export default class Topbar extends Component {
+ 
+    render() {
     return (
         <div className="top">
             <div className="topLeft">
@@ -18,34 +13,36 @@ export default function Topbar() {
                 <i className="topIcon fab fa-instagram-square"></i>
                 <i className="topIcon fab fa-pinterest-square"></i>
             </div>
+
             <div className="topCenter">
                 <ul className="topList">
                     <li className="topListItem"> <Link className="link" to="/" >HOME</Link> </li>
                     <li className="topListItem"> <Link className="link" to="/" >CONTACT</Link> </li>
                     <li className="topListItem"> <Link className="link" to="/write" >WRITE</Link> </li>
-                    <li className="topListItem" onClick={handleLogout}> {user && "LOGOUT"} </li>
                 </ul>
             </div>
+
             <div className="topRight">
-            {
-                user ? (
-                    <Link to="/setting" className="topListItem link">
-                        SETTING
-                    </Link>
-                ) : (
+                {this.props.auth.isAuthenticated && this.props.auth.user && (
+                    <p >
+                        Hello { this.props.auth.user.username }
+                    </p>
+                )}
+
+                <div >
+                    {!this.props.auth.isAuthenticated && (
                     <ul className="topList">
-                        <li className="topListItem">
-                            <Link className="link" to="/login">LOGIN</Link>
-                        </li>
-                        <li className="topListItem">
-                            <Link className="link" to="/register">REGISTER</Link>
-                        </li>
+                        <li className="topListItem"><a href="/register" className="link">Register </a> </li>
+                        <li className="topListItem"> <a href="/login" className="link"> Log in </a></li>
                     </ul>
-                )
-            }
-            
-            {/* <i className="topSearchIcon fas fa-search"></i> */}
+                    )}
+                    {this.props.auth.isAuthenticated && (
+                        <li className="topListItem"><a href="/" className="link">Log Out</a> </li>
+                    )}
+              </div>
+
             </div>
         </div>
     )
+}
 }

@@ -9,6 +9,14 @@
     z-index: 999;
 }
 
+p{
+    width: 34%;
+   font-size:x-large;
+   
+    top: 0;
+    
+    font-family: 'Josefin Sans', sans-serif;
+}
 .topLeft, .topRight {
     flex: 3;
     display: flex;
@@ -41,6 +49,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    text-decoration: none;
 }
 
 .topListItem {

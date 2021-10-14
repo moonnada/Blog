@@ -12,9 +12,15 @@
 }
 
 .loginTitle{
-    font-size: 50px;
+    font-size: 30px;
+    padding-bottom: 80px;
 }
 
+.error{
+    color: red;
+    margin-bottom: 20px;
+
+}
 .loginForm{
     margin-top: 20px;
     display: flex;
@@ -29,6 +35,8 @@
     padding: 10px;
     background-color: white;
     border: none;
+    margin-bottom: 10px;
+
 }
 
 .loginButton{
@@ -38,7 +46,7 @@
     border: none;
     color: white;
     border-radius: 10px;
-    padding: 10px;
+    padding: 17px;
 }
 
 .loginRegisterButton {

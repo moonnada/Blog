@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import FormErrors from "../../components2/FormErrors";
-import Validate from "../../components2/utility/FormValidation";
+import FormErrors from "../FormErrors";
+import Validate from "../utility/FormValidation";
 import { Auth } from "aws-amplify";
-import "./login.css"
 
-
-class Login extends Component {
+class Log_In extends Component {
   state = {
     username: "",
     password: "",
@@ -64,16 +62,16 @@ class Login extends Component {
 
   render() {
     return (
-      <section className="login">
-        <div className="loginTitle">
+      <section className="section auth">
+        <div className="container">
           <h1>Log in</h1>
-          <FormErrors className="error" formerrors={this.state.errors} />
+          <FormErrors formerrors={this.state.errors} />
 
-          <form className="loginForm" onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <div className="field">
               <p className="control">
                 <input 
-                  className="loginInput" 
+                  className="input" 
                   type="text"
                   id="username"
                   aria-describedby="usernameHelp"
@@ -86,20 +84,26 @@ class Login extends Component {
             <div className="field">
               <p className="control has-icons-left">
                 <input 
-                  className="loginInput" 
+                  className="input" 
                   type="password"
                   id="password"
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this.onInputChange}
                 />
-                
+                <span className="icon is-small is-left">
+                  <i className="fas fa-lock"></i>
+                </span>
               </p>
             </div>
-          
             <div className="field">
               <p className="control">
-                <button className="loginButton">
+                <a href="/forgotpassword">Forgot password?</a>
+              </p>
+            </div>
+            <div className="field">
+              <p className="control">
+                <button className="button is-success">
                   Login
                 </button>
               </p>
@@ -111,4 +115,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Log_In;

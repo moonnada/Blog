@@ -6,6 +6,7 @@ import Write from "./pages/write/Write";
 import Setting from "./pages/settings/Setting";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import SinglePost from './components/singlePost/SinglePost';
 import {
   BrowserRouter as Router,
   Switch,
@@ -51,19 +52,14 @@ class App extends Component  {
         <Route path="/login"> {user? <Home/> : <Login />} </Route>
         <Route path="/write"> {user? <Write /> : <Register/> } </Route>
         <Route path="/setting"> {user? <Setting /> : <Register />} </Route>
-        <Route path="/post/:postId"><SinglePost /></Route> */}
-
-        {/* <Route exact path="/login" render={(props) => <Log_In {...props} auth={authProps} />} />
-        <Route exact path="/register" render={(props) => <SignUp {...props} auth={authProps} />} />
-        <Route exact path="/welcome" render={(props) => <Welcome {...props} auth={authProps} />}/> */}
+        */}
 
         <Route exact path="/" render={(props) => <Home {...props} auth={authProps} />} />
-             
-              <Route exact path="/login" render={(props) => <Login {...props} auth={authProps} />} />
-              <Route exact path="/register" render={(props) => <Register {...props} auth={authProps} />} />
-             
-              <Route exact path="/welcome" render={(props) => <Welcome {...props} auth={authProps} />}/>
-
+        <Route exact path="/login" render={(props) => <Login {...props} auth={authProps} />} />
+        <Route exact path="/register" render={(props) => <Register {...props} auth={authProps} />} />
+        <Route exact path="/welcome" render={(props) => <Welcome {...props} auth={authProps} />}/>
+        <Route exact path="/post/:postId" render={(props) => <SinglePost {...props} auth={authProps} />} /> 
+        <Route exact path="/write" render={(props) => <Write {...props} auth={authProps} />}/> 
       </Switch>
     </Router>
   );
